@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediCare Plus - Buy Medicines Online</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="logo">
+                <h1>💊 MediCare Plus</h1>
+            </div>
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#products">Products ▾</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#" onclick="filterByCategory('Pain Relief')">Pain Relief</a></li>
+                            <li><a href="#" onclick="filterByCategory('Supplements')">Supplements</a></li>
+                            <li><a href="#" onclick="filterByCategory('First Aid')">First Aid</a></li>
+                            <li><a href="#" onclick="filterByCategory('Medical Devices')">Medical Devices</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#deals">Deals</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="icon-btn" onclick="toggleWishlist()" title="Wishlist">
+                    ❤️ <span class="wishlist-count">0</span>
+                </button>
+                <button class="icon-btn" onclick="toggleCart()" title="Cart">
+                    🛒 <span class="cart-count">0</span>
+                </button>
+                <button class="btn-login" onclick="toggleLogin()">Login</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero" id="home">
+        <div class="hero-slider">
+            <div class="hero-slide active">
+                <div class="container">
+                    <div class="hero-content">
+                        <h2>Get 20% OFF on First Order!</h2>
+                        <p>Use code: FIRST20</p>
+                        <button class="btn-primary" onclick="scrollToProducts()">Shop Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search & Filter -->
+    <section class="search-section">
+        <div class="container">
+            <div class="search-wrapper">
+                <input type="text" id="searchInput" placeholder="🔍 Search for medicines, health products..." class="search-bar">
+                <button class="btn-search" onclick="searchProducts()">Search</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Category Pills -->
+    <section class="categories">
+        <div class="container">
+            <div class="category-pills">
+                <button class="category-pill active" onclick="filterByCategory('All')">All Products</button>
+                <button class="category-pill" onclick="filterByCategory('Pain Relief')">Pain Relief</button>
+                <button class="category-pill" onclick="filterByCategory('Supplements')">Supplements</button>
+                <button class="category-pill" onclick="filterByCategory('First Aid')">First Aid</button>
+                <button class="category-pill" onclick="filterByCategory('Medical Devices')">Devices</button>
+                <button class="category-pill" onclick="filterByCategory('Hygiene')">Hygiene</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Products</h2>
+                <div class="filter-sort">
+                    <select id="sortSelect" onchange="sortProducts()">
+                        <option value="default">Sort By</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name">Name: A-Z</option>
+                        <option value="rating">Rating</option>
+                    </select>
+                </div>
+            </div>
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Deals Section -->
+    <section class="deals-section" id="deals">
+        <div class="container">
+            <h2>Special Deals 🔥</h2>
+            <div class="deals-grid" id="dealsGrid">
+                <!-- Deals will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-box">
+                    <div class="feature-icon">✓</div>
+                    <h3>100% Genuine</h3>
+                    <p>All medicines verified</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Free Delivery</h3>
+                    <p>On orders above ₹500</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Secure Payment</h3>
+                    <p>Multiple payment options</p>
+                </div>
+                <div class="feature-box">
+                    <div class="feature-icon">↩️</div>
+                    <h3>Easy Returns</h3>
+                    <p>7-day return policy</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2>About MediCare Plus</h2>
+            <p>Your trusted online pharmacy since 2020. We provide authentic medicines and healthcare products with doorstep delivery. Our mission is to make healthcare accessible and affordable for everyone.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>1800-123-4567 (Toll Free)</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📧</span>
+                        <div>
+                            <h4>Email</h4>
+                            <p>support@medicareplus.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">🕒</span>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>24/7 Available</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <input type="text" placeholder="Your Name" id="contactName">
+                    <input type="email" placeholder="Your Email" id="contactEmail">
+                    <textarea placeholder="Your Message" id="contactMessage" rows="4"></textarea>
+                    <button class="btn-primary" onclick="submitContact()">Send Message</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Wishlist Modal -->
+    <div id="wishlistModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>My Wishlist ❤️</h2>
+                <span class="close" onclick="toggleWishlist()">&times;</span>
+            </div>
+            <div id="wishlistItems" class="modal-body">
+                <p class="empty-message">Your wishlist is empty</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Modal -->
+    <div id="cartModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Shopping Cart 🛒</h2>
+                <span class="close" onclick="toggleCart()">&times;</span>
+            </div>
+            <div id="cartItems" class="modal-body">
+                <p class="empty-message">Your cart is empty</p>
+            </div>
+            <div class="cart-footer">
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span>₹<span id="subtotal">0</span></span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Delivery:</span>
+                        <span id="deliveryCharge">Free</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span>₹<span id="totalPrice">0</span></span>
+                    </div>
+                </div>
+                <button class="btn-checkout" onclick="checkout()">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="modal">
+        <div class="modal-content small">
+            <div class="modal-header">
+                <h2>Login / Sign Up</h2>
+                <span class="close" onclick="toggleLogin()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form class="login-form" onsubmit="handleLogin(event)">
+                    <input type="email" placeholder="Email Address" required>
+                    <input type="password" placeholder="Password" required>
+                    <button type="submit" class="btn-primary">Login</button>
+                    <p class="form-footer">Don't have an account? <a href="#">Sign Up</a></p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal -->
+    <div id="productModal" class="modal">
+        <div class="modal-content large">
+            <span class="close" onclick="closeProductModal()">&times;</span>
+            <div id="productDetail" class="product-detail">
+                <!-- Product details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>MediCare Plus</h3>
+                    <p>Your trusted online pharmacy for genuine medicines and healthcare products.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#">Pain Relief</a></li>
+                        <li><a href="#">Supplements</a></li>
+                        <li><a href="#">First Aid</a></li>
+                        <li><a href="#">Medical Devices</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 MediCare Plus. All rights reserved.</p>
+                <p class="disclaimer">⚠️ Disclaimer: Consult a physician before purchasing medicines.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
